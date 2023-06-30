@@ -28,8 +28,8 @@ class PrizeToy {
         this.quantity = quantity;
     }
 
-    
-
-
-
+    @Override
+    public String toString() {
+        return String.format("%s", this.name);
+    }
 }

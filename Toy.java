@@ -1,4 +1,5 @@
 class Toy implements Comparable<Toy> {
+
     static public int counter;
     private int id;
     protected String name;
@@ -35,13 +36,17 @@ class Toy implements Comparable<Toy> {
         this.quantity = quantity;
     }
 
+    public int getId () {
+        return id;
+    }
+
     @Override
     public String toString() {
-        return String.format("id %d %s, количество %d, шанс выпадения %.0f%%", this.id, this.name, this.quantity, this.chance);
+        return String.format("id %d %s, количество %d, шанс выпадения %.1f%%", this.id, this.name, this.quantity, this.chance);
     }
 
     @Override
     public int compareTo (Toy o) {
-        return Double.compare(chance, o.chance);
+        return Double.compare(o.chance, chance);
     }
 }

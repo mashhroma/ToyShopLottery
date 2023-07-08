@@ -6,16 +6,16 @@ public class program {
         toys.putToy(new Toy ("робот", 2));
         toys.putToy(new Toy ("кукла", 6));
 
+        System.out.println("Всего подарков в автомате:");
         toys.printActiveToyCol();
 
+        toys.runLottery();
+
+        System.out.println("Подарки, готовые к выдаче:");
         toys.printReadyToGiveToyCol();
 
-    //     Toy toy1 = new Toy ("конструктор", 2);
-    //     Toy toy2 = new Toy ("робот", 2);
-    //     Toy toy3 = new Toy ("кукла", 6);
+        System.out.println("Осталось подарков в автомате:");
+        toys.printActiveToyCol();
 
-    //     System.out.println(toy1);
-    //     System.out.println(toy2);
-    //     System.out.println(toy3);
     }
 }

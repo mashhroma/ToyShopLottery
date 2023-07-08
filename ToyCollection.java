@@ -16,29 +16,41 @@ public class ToyCollection {
 
     public void setAllChances() {
         int sum = 0;
-        for (Toy prizeToy : collection) {
-            sum += prizeToy.quantity;
+        for (Toy toy : collection) {
+            sum += toy.quantity;
         }
-        for (Toy prizeToy : collection) {
-            prizeToy.setChance(prizeToy.quantity * 100 / sum);
+        for (Toy toy : collection) {
+            toy.setChance(toy.quantity * 100 / sum);
         }
     }
 
     public void runLottery() {
-        int possibility = new Random().nextInt(100);
-        Iterator<Toy> col = collection.iterator();
-        int start = 0;
-        while (col.hasNext()) {
-            if (start + col.next().chance < possibility) {
-                prizeQueue.add(col.next());
-                if (col.next().quantity > 1)
-                    col.next().setQuantity(col.next().quantity - 1);
+        double possibility = new Random().nextInt(100);
+        System.out.println(possibility);
+        double start = 0;
+        for (Toy toy : collection) {
+            if (possibility > start && possibility < (start + toy.chance)) {
+                prizeQueue.add(toy);
+                if (toy.quantity > 1)
+                    toy.setQuantity(toy.quantity - 1);
                 else
-                    col.remove();
-                System.out.printf("Вы выиграли игрушку: %s", col.next());
+                    collection.remove(toy);
+                System.out.printf("Вы выиграли игрушку: %s\n", toy);
             }
-            start += col.next().chance;
+            start += toy.chance;
         }
+        // Iterator<Toy> col = collection.iterator();
+        // while (col.hasNext()) {
+        //     if (start + col.next().chance < possibility) {
+        //         prizeQueue.add(col.next());
+        //         if (col.next().quantity > 1)
+        //             col.next().setQuantity(col.next().quantity - 1);
+        //         else
+        //             col.remove();
+        //         System.out.printf("Вы выиграли игрушку: %s", col.next());
+        //     }
+        //     start += col.next().chance;
+        // }
         setAllChances();
     }
 

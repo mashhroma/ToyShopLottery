@@ -1,6 +1,6 @@
 class Toy implements Comparable<Toy> {
     static public int counter;
-    protected int id;
+    private int id;
     protected String name;
     protected int quantity;
     protected double chance;

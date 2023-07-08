@@ -10,7 +10,7 @@ public class program {
         toys.printActiveToyCol();
         System.out.println("");
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 10; i++) {
             System.out.println("\nЗапуск розыгрыша №" + (i+1));
             toys.runLottery();
         }

@@ -37,8 +37,8 @@ public class ToyCollection {
                 System.out.printf("Вы выиграли игрушку: %s\n", toy.name);
             }
             start += toy.chance;
+            setAllChances();
         }
-        setAllChances();
     }
 
     public void addPrize(Toy prizeToy) {

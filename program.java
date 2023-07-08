@@ -8,7 +8,6 @@ public class program {
 
         System.out.println("Всего подарков в автомате:");
         toys.printActiveToyCol();
-        System.out.println("");
 
         for (int i = 0; i < 10; i++) {
             System.out.println("\nЗапуск розыгрыша №" + (i+1));
@@ -20,6 +19,10 @@ public class program {
 
         System.out.println("\nОсталось подарков в автомате:");
         toys.printActiveToyCol();
+
+        toys.getToys();
+
+        toys.printReadyToGiveToyCol();
 
     }
 }

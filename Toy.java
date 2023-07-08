@@ -1,4 +1,5 @@
 class Toy implements Comparable<Toy> {
+    
     static public int counter;
     private int id;
     protected String name;
@@ -33,6 +34,10 @@ class Toy implements Comparable<Toy> {
 
     public void setQuantity (int quantity) {
         this.quantity = quantity;
+    }
+
+    public int getId () {
+        return id;
     }
 
     @Override

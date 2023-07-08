@@ -8,13 +8,17 @@ public class program {
 
         System.out.println("Всего подарков в автомате:");
         toys.printActiveToyCol();
+        System.out.println("");
 
-        toys.runLottery();
+        for (int i = 0; i < 3; i++) {
+            System.out.println("\nЗапуск розыгрыша №" + (i+1));
+            toys.runLottery();
+        }
 
-        System.out.println("Подарки, готовые к выдаче:");
+        System.out.println("\nПодарки, готовые к выдаче:");
         toys.printReadyToGiveToyCol();
 
-        System.out.println("Осталось подарков в автомате:");
+        System.out.println("\nОсталось подарков в автомате:");
         toys.printActiveToyCol();
 
     }

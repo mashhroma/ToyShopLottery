@@ -3,7 +3,9 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.Queue;
 import java.util.Random;
 
@@ -63,15 +65,15 @@ public class ToyCollection {
     public void getToys() {
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("E yyyy.MM.dd hh:mm:ss");
-        String fileName = "givenPrizes.json";
+        String fileName = "givenPrizes.txt";
         Prize prize = prizeQueue.element();
         try (FileWriter writer = new FileWriter(fileName, Charset.forName("utf-8"), true)) {
-            writer.write(dateFormat.format(date) + " выдан приз: номер лота:" + prize.getId() + " " + prize.name + "\n");
+            writer.write(dateFormat.format(date) + " ВЫДАН ПРИЗ: номер лота " + prize.getId() + ", игрушка - " + prize.name + "\n");
             // writer.write("\"clientName\":\"" + prize.getId() + "\",\n");
             // writer.write("\"clientName\":\"" + prize.name + "\",\n");
             // writer.write("}\n");
             writer.flush();
-            System.out.println(dateFormat.format(date) + " выдан приз: номер лота:" + prize.getId() + " " + prize.name + "\n");
+            System.out.println(dateFormat.format(date) + " ВЫДАН ПРИЗ: номер лота " + prize.getId() + ", игрушка - " + prize.name + "\n");
             prizeQueue.remove();
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
@@ -92,8 +94,14 @@ public class ToyCollection {
         if (prizeQueue.isEmpty()) {
             System.out.println("Нет игрушек, готовых к выдаче.");
         } else {
+            Map<String, Integer> prizes = new HashMap<>();;
             for (Prize prize : prizeQueue) {
-                System.out.println(prize);
+                int count = 1;
+                if (prizes.containsKey(prize.name)) count = prizes.get(prize.name)+1;
+                prizes.put(prize.name, count);
+            }
+            for (var prize : prizes.entrySet()) {
+                System.out.printf("%s, количество %d\n", prize.getKey(), prize.getValue());
             }
         }
     }

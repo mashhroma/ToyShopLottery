@@ -20,6 +20,7 @@ public class program {
         System.out.println("\nОсталось подарков в автомате:");
         toys.printActiveToyCol();
 
+        System.out.println("\nВыдача призов");
         toys.getToys();
 
         toys.printReadyToGiveToyCol();

@@ -1,11 +1,10 @@
 import java.util.LinkedList;
-import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Random;
 
 public class ToyCollection {
 
-    protected PriorityQueue<Toy> collection = new PriorityQueue<>();
+    protected LinkedList<Toy> collection = new LinkedList<>();
     protected Queue<Prize> prizeQueue = new LinkedList<>();
 
     public void putToy(Toy toy) {
@@ -25,20 +24,22 @@ public class ToyCollection {
 
     public void runLottery() {
         double possibility = new Random().nextInt(100);
-        // System.out.println(possibility);
+        System.out.println(possibility);
         double start = 0;
+        collection.sort(null);
         for (Toy toy : collection) {
-            if (possibility > start && possibility < (start + toy.chance)) {
-                addPrize(toy);
-                if (toy.quantity > 1)
-                    toy.setQuantity(toy.quantity - 1);
-                else
-                    collection.remove(toy);
-                System.out.printf("Вы выиграли игрушку: %s\n", toy.name);
+            if (possibility >= start && possibility < (start + toy.chance)) {
+            addPrize(toy);
+            if (toy.quantity > 1)
+            toy.setQuantity(toy.quantity - 1);
+            else
+            collection.remove(toy);
+            System.out.printf("Вы выиграли игрушку: %s\n", toy.name);
             }
             start += toy.chance;
-            setAllChances();
         }
+        setAllChances();
+        collection.sort(null);;
     }
 
     public void addPrize(Toy prizeToy) {

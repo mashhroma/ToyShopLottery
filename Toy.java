@@ -1,5 +1,5 @@
 class Toy implements Comparable<Toy> {
-    
+
     static public int counter;
     private int id;
     protected String name;
@@ -47,6 +47,6 @@ class Toy implements Comparable<Toy> {
 
     @Override
     public int compareTo (Toy o) {
-        return Double.compare(chance, o.chance);
+        return Double.compare(o.chance, chance);
     }
 }
